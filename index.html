@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tip calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 style="border: solid 1px;padding: 5px;">Tip calculator</h2>
+        <div class="card">
+            <div class="left">
+            <label>Bill</label>
+            <br>
+                <input type="number" placeholder="$" id="billamount" required />
+                <br>
+                select Tip %
+                <br>
+                <button id="btn0"  onclick="btninput(this)"> 5</button>
+                <button id="btn1"  onclick="btninput(this)"> 10 </button>
+                <button id="btn2"  onclick="btninput(this)"> 15 </button>
+                <button id="btn3"  onclick="btninput(this)"> 25 </button>
+                <button id="btn4"  onclick="btninput(this)"> 50 </button>
+                <input type="button" value="custom" />
+                <div id="demo"></div>
+                <br>
+                <label>Number of People</label>
+                <br>
+                <input type="number" id="no-of-people" required />
+                <div>
+                <button onclick="result()" type="submit">submit</button>
+                </div>
+            </div>
+            <div class="right">
+               <label>Tip Amount/person:</label><span id="totalamount"></span>
+               <br>
+               <label>Total/person:</label>
+                <span id="total"></span>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        var demo=document.getElementById("demo")
+        let billamount=document.getElementById("billamount")
+        let totalamount=document.getElementById("totalamount")
+        let total=document.getElementById("total")
+        let noofpeople=document.getElementById("no-of-people")
+        totalamount.innerText="$ 0.00"
+        total.innerText="$ 0.00"
+        function btninput(clicked){
+            var btnvalue=clicked.innerText/100
+            demo.innerText=btnvalue
+            
+        }
+        function result(){
+           if(billamount.value=="" || noofpeople.value=="" || demo.innerText==""){
+            alert("input values should not be empty")
+           }else{
+            totalamount.innerText="$"+parseInt(billamount.value*demo.innerText/noofpeople.value)+".00"
+            total.innerText="$"+(parseInt(billamount.value)+parseInt(billamount.value*demo.innerText/noofpeople.value))+".00"
+           }
+            
+        }
+        // document.write(billamount.value)
+    </script>
+</body>
+</html>
